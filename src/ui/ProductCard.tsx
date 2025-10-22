@@ -2,7 +2,7 @@ import {type FC, useState} from "react";
 import type {Product} from "@type/product.ts";
 import {Button} from "@ui/Button.tsx";
 import {FaCartPlus, FaRegTrashAlt} from "react-icons/fa";
-import {useCartContext} from "../features/cart/сartContext.ts";
+import {useCartActionsContext} from "../features/cart/сartContext.ts";
 import {FaAngleLeft, FaAngleRight} from "react-icons/fa6";
 
 type ProductCardProps = {
@@ -13,7 +13,12 @@ type ProductCardProps = {
 
 export const ProductCard: FC<ProductCardProps> = ({product, productCount, cartItemId}) => {
   const [count, setCount] = useState<number>(productCount)
-  const {addToCart, removeFromCart, incrementProductCount, decrementProductCount} = useCartContext()
+  const {
+    addToCart,
+    removeFromCart,
+    incrementProductCount,
+    decrementProductCount
+  } = useCartActionsContext()
 
   function incrementCount() {
     setCount(prev => prev + 1)

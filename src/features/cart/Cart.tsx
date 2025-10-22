@@ -1,14 +1,14 @@
-import {type FC, useMemo} from "react";
+import {type FC} from "react";
 import {Layout} from "@ui/Layout.tsx";
 import {ProductCard} from "@ui/ProductCard.tsx";
-import {useCartContext} from "./сartContext.ts";
+import {useCartStateContext} from "./сartContext.ts";
 
 export const Cart: FC = () => {
-  const {cart} = useCartContext()
-  const totalPrice = useMemo(()=>
-    cart.reduce((acc, cartItem) => {
-    return acc + cartItem.product.price * cartItem.count
-  }, 0), [cart])
+  const {cart} = useCartStateContext()
+  const totalPrice = cart.reduce(
+    (acc, cartItem) => {
+      return acc + cartItem.product.price * cartItem.count
+    }, 0)
 
   return (
     <Layout
