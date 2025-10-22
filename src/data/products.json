@@ -1,0 +1,12 @@
+[
+  { "id": "1", "title": "Wireless Mouse", "price": 25.99 },
+  { "id": "2", "title": "Mechanical Keyboard", "price": 89.5 },
+  { "id": "3", "title": "27-inch Monitor", "price": 249.99 },
+  { "id": "4", "title": "USB-C Hub", "price": 39.9 },
+  { "id": "5", "title": "Noise Cancelling Headphones", "price": 199.0 },
+  { "id": "6", "title": "Laptop Stand", "price": 45.75 },
+  { "id": "7", "title": "Webcam HD", "price": 59.99 },
+  { "id": "8", "title": "Gaming Chair", "price": 329.0 },
+  { "id": "9", "title": "Smart LED Lamp", "price": 34.5 },
+  { "id": "10", "title": "External SSD 1TB", "price": 119.99 }
+]

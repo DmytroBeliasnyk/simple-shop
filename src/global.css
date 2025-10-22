@@ -1,0 +1,15 @@
+@import "tailwindcss";
+@plugin 'tailwind-scrollbar';
+
+@theme {
+  --color-bg-primary: #FFF8E7; /* Основной фон (тёплый кремовый) */
+  --color-bg-secondary: #FFF1D8; /* Дополнительный фон (светлый, мягкий) */
+  --color-bg-surface: #F6E7CB; /* Поверхности: карточки, панели */
+  --color-primary: #E4A788; /* Основной акцент (терракотовый) */
+  --color-secondary: #F2C6A0; /* Вторичный акцент (персиковый) */
+  --color-accent: #FFD580; /* Кнопки, выделения (охра) */
+  --color-hover: #E29578; /* Hover-состояние */
+  --color-text-primary: #5A4634; /* Основной текст (тёмно-коричневый) */
+  --color-text-secondary: #8C7462; /* Вторичный текст */
+  --color-border-color: #EADBC8; /* Границы, разделители */
+}
