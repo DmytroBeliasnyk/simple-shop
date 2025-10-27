@@ -1,7 +1,8 @@
 import type {Product} from "@type/product.ts";
 
+export type CartItemId = string
 export type CartItem = {
   product: Product;
-  id: string;
+  id: CartItemId;
   count: number;
 }

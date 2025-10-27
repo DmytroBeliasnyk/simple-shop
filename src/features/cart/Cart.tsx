@@ -1,14 +1,12 @@
 import {type FC} from "react";
 import {Layout} from "@ui/Layout.tsx";
-import {ProductCard} from "@ui/ProductCard.tsx";
-import {useCartStateContext} from "./сartContext.ts";
+import {CartItemCard} from "./CartItemCard.tsx";
+import {useAppSelector} from "../../store.ts";
+import {cartSlice} from "./cartSlice.ts";
 
 export const Cart: FC = () => {
-  const {cart} = useCartStateContext()
-  const totalPrice = cart.reduce(
-    (acc, cartItem) => {
-      return acc + cartItem.product.price * cartItem.count
-    }, 0)
+  const cart = useAppSelector(cartSlice.selectors.selectCartItems)
+  const totalPrice = useAppSelector(cartSlice.selectors.selectTotalPrice)
 
   return (
     <Layout
@@ -16,7 +14,7 @@ export const Cart: FC = () => {
       footer={totalPrice > 0 ? <span>Total price: {totalPrice}</span> : null}
     >
       {cart.map(({product, count, id}) => (
-        <ProductCard
+        <CartItemCard
           key={id}
           product={product}
           productCount={count}

@@ -1,33 +1,25 @@
 import {type FC, useState} from "react";
 import type {Product} from "@type/product.ts";
 import {Button} from "@ui/Button.tsx";
-import {FaCartPlus, FaRegTrashAlt} from "react-icons/fa";
-import {useCartActionsContext} from "../features/cart/сartContext.ts";
+import {FaCartPlus} from "react-icons/fa";
 import {FaAngleLeft, FaAngleRight} from "react-icons/fa6";
+import {useAppDispatch} from "../../store.ts";
+import {cartSlice} from "../cart/cartSlice.ts";
 
 type ProductCardProps = {
   product: Product;
-  productCount: number;
-  cartItemId?: string
 }
 
-export const ProductCard: FC<ProductCardProps> = ({product, productCount, cartItemId}) => {
-  const [count, setCount] = useState<number>(productCount)
-  const {
-    addToCart,
-    removeFromCart,
-    incrementProductCount,
-    decrementProductCount
-  } = useCartActionsContext()
+export const ProductCard: FC<ProductCardProps> = ({product}) => {
+  const [count, setCount] = useState<number>(1)
+  const dispatch = useAppDispatch()
 
   function incrementCount() {
     setCount(prev => prev + 1)
-    if (cartItemId) incrementProductCount(cartItemId)
   }
 
   function decrementCount() {
     setCount(prev => Math.max(1, prev - 1))
-    if (cartItemId) decrementProductCount(cartItemId)
   }
 
   return (
@@ -38,7 +30,7 @@ export const ProductCard: FC<ProductCardProps> = ({product, productCount, cartIt
       </div>
       <div className="flex flex-col items-end gap-2">
         <span className="text-2xl text-text-primary font-semibold">
-          {!cartItemId ? product.price : product.price * count}
+          {product.price}
         </span>
         <div className="flex gap-2">
           <div className="flex items-center text-sm">
@@ -55,14 +47,10 @@ export const ProductCard: FC<ProductCardProps> = ({product, productCount, cartIt
           <Button
             type={'button'}
             onClick={() => {
-              if (!cartItemId) {
-                addToCart(product, count)
-                setCount(1)
-              } else {
-                removeFromCart(cartItemId)
-              }
+              dispatch(cartSlice.actions.addItem({product, count}))
+              setCount(1)
             }}>
-            {!cartItemId ? <FaCartPlus/> : <FaRegTrashAlt/>}
+            <FaCartPlus/>
           </Button>
         </div>
       </div>
