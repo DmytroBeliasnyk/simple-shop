@@ -1,4 +1,4 @@
-import {type FC} from "react";
+import {type FC, memo} from "react";
 import type {Product} from "@type/product.ts";
 import {Button} from "@ui/Button.tsx";
 import {FaRegTrashAlt} from "react-icons/fa";
@@ -13,7 +13,7 @@ type ProductCardProps = {
   cartItemId: CartItemId;
 }
 
-export const CartItemCard: FC<ProductCardProps> = ({product, productCount, cartItemId}) => {
+export const CartItemCard: FC<ProductCardProps> = memo(({product, productCount, cartItemId}) => {
   const dispatch = useAppDispatch()
 
   const incrementCount = () =>
@@ -53,4 +53,4 @@ export const CartItemCard: FC<ProductCardProps> = ({product, productCount, cartI
       </div>
     </div>
   )
-}
+})
